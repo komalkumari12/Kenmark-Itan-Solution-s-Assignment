@@ -5,12 +5,6 @@ exports.createNewProduct = async (req, res) => {
     // console.log(req.body);
     const newProduct = await Product.create(req.body);
 
-    if (!newProduct) {
-      return res.status(404).json({
-        message: "Product cannot be created",
-      });
-    }
-
     return res.status(200).json({
       message: "New product created",
       data: newProduct,

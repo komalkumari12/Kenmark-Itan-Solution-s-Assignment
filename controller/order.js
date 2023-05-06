@@ -4,12 +4,6 @@ exports.createOrder = async (req, res) => {
   try {
     const newOrder = await Order.create(req.body);
 
-    if (!newOrder) {
-      return res.status(404).json({
-        message: "Could not create new Order",
-      });
-    }
-
     return res.status(200).json({
       message: "Created new Order",
       data: newOrder,
