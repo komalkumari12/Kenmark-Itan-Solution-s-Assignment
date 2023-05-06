@@ -73,13 +73,13 @@ exports.updateProductById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const retrieveProducts = await Product.findByIdAndUpdate(id, req.body, {
+    const updateProducts = await Product.findByIdAndUpdate(id, req.body, {
       $set: {
         new: true,
       },
     });
 
-    if (!retrieveProducts) {
+    if (!updateProducts) {
       return res.status(404).json({
         message: "Could not find product",
       });
@@ -88,7 +88,7 @@ exports.updateProductById = async (req, res) => {
     //data before updation is visible here
     return res.status(200).json({
       message: "Updated Product by id",
-      data: retrieveProducts,
+      data: updateProducts,
     });
   } catch (error) {
     return res.status(500).json({
