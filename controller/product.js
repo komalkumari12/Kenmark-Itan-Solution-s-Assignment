@@ -74,9 +74,7 @@ exports.updateProductById = async (req, res) => {
     const { id } = req.params;
 
     const updateProducts = await Product.findByIdAndUpdate(id, req.body, {
-      $set: {
-        new: true,
-      },
+      new: true,
     });
 
     if (!updateProducts) {
@@ -85,7 +83,6 @@ exports.updateProductById = async (req, res) => {
       });
     }
 
-    //data before updation is visible here
     return res.status(200).json({
       message: "Updated Product by id",
       data: updateProducts,
